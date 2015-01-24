@@ -134,6 +134,23 @@ public class PdeTextAreaDefaults extends TextAreaDefaults {
 
     inputHandler.addKeyBinding(mod + "+ENTER", InputHandler.REPEAT);
 
+    // Emacs Key Bindings
+    inputHandler.addKeyBinding("C+f", InputHandler.NEXT_CHAR);
+    inputHandler.addKeyBinding("C+b", InputHandler.PREV_CHAR);
+    inputHandler.addKeyBinding("C+p", InputHandler.PREV_LINE);
+    inputHandler.addKeyBinding("C+n", InputHandler.NEXT_LINE);
+    inputHandler.addKeyBinding("C+a", InputHandler.HOME);
+    inputHandler.addKeyBinding("C+e", InputHandler.END);
+    inputHandler.addKeyBinding("C+k", InputHandler.CUT_END);
+    inputHandler.addKeyBinding(mod + "+f", InputHandler.NEXT_WORD);
+    inputHandler.addKeyBinding(mod + "+b", InputHandler.PREV_WORD);
+    inputHandler.addKeyBinding(mod + "+d", InputHandler.DELETE_WORD);
+    inputHandler.addKeyBinding(mod + "+BACKSPACE", InputHandler.BACKSPACE_WORD);
+    inputHandler.addKeyBinding("C+d", InputHandler.DELETE);
+    inputHandler.addKeyBinding(mod + "+w", InputHandler.CLIPBOARD_COPY);
+    inputHandler.addKeyBinding("C+w", InputHandler.CLIPBOARD_CUT);
+    inputHandler.addKeyBinding("C+y", InputHandler.CLIPBOARD_PASTE);
+
     document = new SyntaxDocument();
     editable = true;
     electricScroll = 3;

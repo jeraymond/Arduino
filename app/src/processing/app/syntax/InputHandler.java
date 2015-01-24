@@ -44,6 +44,7 @@ public abstract class InputHandler extends KeyAdapter
         public static final ActionListener END = new end(false);
         public static final ActionListener DOCUMENT_END = new document_end(false);
         public static final ActionListener SELECT_END = new end(true);
+        public static final ActionListener CUT_END = new end(true, true);
         public static final ActionListener SELECT_DOC_END = new document_end(true);
         public static final ActionListener INSERT_BREAK = new insert_break();
         public static final ActionListener INSERT_TAB = new insert_tab();
@@ -568,10 +569,19 @@ public abstract class InputHandler extends KeyAdapter
         public static class end implements ActionListener
         {
                 private boolean select;
+                private boolean cut;
 
                 public end(boolean select)
                 {
                         this.select = select;
+                        this.cut = false;
+                }
+
+                public end(boolean select, boolean cut)
+                {
+                        this.select = select;
+                        this.cut = cut;
+
                 }
 
                 public void actionPerformed(ActionEvent evt)
@@ -610,8 +620,13 @@ public abstract class InputHandler extends KeyAdapter
                         else
                                 caret = lastOfLine;
 
-                        if(select)
+                        if(select) {
                                 textArea.select(textArea.getMarkPosition(),caret);
+                                if (cut) {
+                                       textArea.cut();
+                                }
+                        }
+
                         else
                                 textArea.setCaretPosition(caret);
                 }
